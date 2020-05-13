@@ -6,7 +6,7 @@ class Admin::RestaurantsController < ApplicationController
   before_action :set_restaurants, only: %i[show edit update destroy]
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.page(params[:page]).per(10)
   end
 
   # get create new page
