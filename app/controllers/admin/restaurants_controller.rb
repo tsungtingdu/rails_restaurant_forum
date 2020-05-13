@@ -43,14 +43,14 @@ class Admin::RestaurantsController < ApplicationController
 
   def destroy
     @restaurant.destroy
-    redirect_to admin_restaurant_path
+    redirect_to admin_restaurants_path
     flash[:alert] = 'restaurant was deleted!'
   end
 
   private
 
   def restaurant_params
-    paramts.requrire(:restaurant).permit(:name, :tel, :opening_hours, :address, :description)
+    params.require(:restaurant).permit(:name, :tel, :opening_hours, :address, :description, :image)
   end
 
   def set_restaurants
