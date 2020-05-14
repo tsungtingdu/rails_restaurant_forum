@@ -23,7 +23,7 @@ category_list = [
 ]
 
 category_list.each do |t|
-  Category.create(name: t['name'])
+  Category.create(name: t[:name])
 end
 
 # create admin
