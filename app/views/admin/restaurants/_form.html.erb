@@ -11,24 +11,35 @@
 
 <%# form %>
 <%= form_for  [:admin, @restaurant] do |f| %>
+  <div class="form-group">
   <%= f.label :name, "Name" %>
-  <%= f.text_field :name %>
-  
+  <%= f.text_field :name, :class => 'form-control' %>
+</div>
+ <div class="form-group">
+  <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: true}, {class: 'form-control'}%>
+  </div>
+  <div class="form-group">
   <%= f.label :tel, "Tel" %>
-  <%= f.text_field :tel %>
-  
+  <%= f.text_field :tel, :class => 'form-control'%>
+  </div>
+  <div class="form-group">
   <%= f.label :address, "Address" %>
-  <%= f.text_field :address %>
-
+  <%= f.text_field :address, :class => 'form-control' %>
+  </div>
+<div class="form-group">
   <%= f.label :opening_hours, "Opening Hours" %>
-  <%= f.text_field :opening_hours %>
-
+  <%= f.text_field :opening_hours, :class => 'form-control' %>
+  </div>
+<div class="form-group">
   <%= f.label :description, "Description" %>
-  <%= f.text_area :description %>
-
+  <%= f.text_area :description, :class => 'form-control' %>
+  </div>
+<div class="form-group">
   <%= f.label :image, "Photo" %>
   <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
-  <%= f.file_field :image %>
-
-  <%= f.submit %>
+  <%= f.file_field :image, :class => 'form-control' %>
+  </div>
+<div class="form-group">
+  <%= f.submit 'Submit', :class => 'btn btn-success btn-sm' %>
+</div>
 <% end %>
