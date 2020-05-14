@@ -1,6 +1,7 @@
 <h1><%= @restaurant.name %></h1>
-
+<h3><%= @restaurant.category.name %></h3>
 <%= image_tag @restaurant.image, width: '600px' %>
+<br>
 Opening Hours:<%= @restaurant.opening_hours %><br>
 Tel: <%= @restaurant.tel %><br>
 Address: <%= @restaurant.address %><br>

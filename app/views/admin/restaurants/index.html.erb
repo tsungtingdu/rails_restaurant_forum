@@ -1,10 +1,11 @@
-<h1>餐廳後台</h1>
+ <h1>餐廳後台</h1>
 <%= link_to 'New Restaurant', new_admin_restaurant_path, :class => 'btn btn-primary btn-sm' %>
 <div class="restaurantsContrainer container"> 
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col">Category</th>
       <th scope="col">name</th>
       <th scope="col">show</th>
       <th scope="col">edit</th>
@@ -15,6 +16,7 @@
    <% @restaurants.each do |restaurant| %>
     <tr>
       <th scope="row">#</th>
+      <td> <%= restaurant.category.name %> </td>
       <td> <%= restaurant.name %> </td>
       <td>  <%= link_to 'Show', admin_restaurant_path(restaurant) %> </td>
       <td> <%= link_to 'Edit', edit_admin_restaurant_path(restaurant) %> </td>
