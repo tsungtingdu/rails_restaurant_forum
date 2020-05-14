@@ -1,31 +1,37 @@
- <h1>餐廳後台</h1>
-<%= link_to 'New Restaurant', new_admin_restaurant_path, :class => 'btn btn-primary btn-sm' %>
-<div class="restaurantsContrainer container"> 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Category</th>
-      <th scope="col">name</th>
-      <th scope="col">show</th>
-      <th scope="col">edit</th>
-      <th scope="col">delete</th>
-    </tr>
-  </thead>
-  <tbody>
-   <% @restaurants.each do |restaurant| %>
-    <tr>
-      <th scope="row">#</th>
-      <td> <%= restaurant.category.name %> </td>
-      <td> <%= restaurant.name %> </td>
-      <td>  <%= link_to 'Show', admin_restaurant_path(restaurant) %> </td>
-      <td> <%= link_to 'Edit', edit_admin_restaurant_path(restaurant) %> </td>
-      <td>   <%= link_to 'Delete', admin_restaurant_path(restaurant), method: :delete, data: {confirm:"Are you sure?"} %> </td>
-    </tr>
-      <% end %>
-  </tbody>
-</table>
-</div>
-<div class="pagination">
-  <%= paginate @restaurants %>
+ <div class="container">
+  <h1>餐廳總表</h1>
+  <div>
+    <%= link_to 'Restaurant', admin_restaurants_path %> |
+    <%= link_to 'Categories', admin_categories_path %>
+  </div>
+  <%= link_to 'New Restaurant', new_admin_restaurant_path, :class => 'btn btn-primary btn-sm' %>
+  <div class="restaurantsContrainer container"> 
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Category</th>
+        <th scope="col">name</th>
+        <th scope="col">show</th>
+        <th scope="col">edit</th>
+        <th scope="col">delete</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <th scope="row">#</th>
+        <td> <%= restaurant.category.name %> </td>
+        <td> <%= restaurant.name %> </td>
+        <td>  <%= link_to 'Show', admin_restaurant_path(restaurant) %> </td>
+        <td> <%= link_to 'Edit', edit_admin_restaurant_path(restaurant) %> </td>
+        <td>   <%= link_to 'Delete', admin_restaurant_path(restaurant), method: :delete, data: {confirm:"Are you sure?"} %> </td>
+      </tr>
+        <% end %>
+    </tbody>
+  </table>
+  </div>
+  <div class="pagination">
+    <%= paginate @restaurants %>
+  </div>
 </div>
