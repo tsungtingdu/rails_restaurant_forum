@@ -1,0 +1,5 @@
+ <% if restaurant.liked?(current_user) %>
+  <%= link_to 'Remove like', unlike_restaurant_path(restaurant), method: :post, class: "btn btn-danger btn-sm" %>
+<% else %>
+  <%= link_to 'like', like_restaurant_path(restaurant), method: :post, class: "btn btn-success btn-sm" %>
+<% end %>
