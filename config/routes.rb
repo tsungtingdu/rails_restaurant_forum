@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create destroy]
   end
   resources :categories, only: %i[show]
+  resources :users, only: %i[show edit update]
 
   namespace :admin do
     resources :restaurants
