@@ -7,6 +7,14 @@ Rails.application.routes.draw do
   root 'restaurants#index'
   resources :restaurants, only: %i[index show] do
     resources :comments, only: %i[create destroy]
+
+    collection do
+      get :feeds
+    end
+
+    member do
+      get :dashboard
+    end
   end
   resources :categories, only: %i[show]
   resources :users, only: %i[show edit update]
