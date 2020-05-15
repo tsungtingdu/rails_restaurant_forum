@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 namespace :dev do
-  task fake: :environment do
+  task fake_restaurant: :environment do
     Restaurant.destroy_all
-
-    100.times do |_i|
+    500.times do |_i|
       Restaurant.create!(
         name: FFaker::Name.first_name,
         opening_hours: '11:00',
@@ -16,5 +15,30 @@ namespace :dev do
     end
     puts 'have created fake restaurants'
     puts "now you have #{Restaurant.count} restaurants data"
+  end
+
+  task fake_user: :environment do
+    20.times do |_i|
+      User.create(
+        email: FFaker::Internet.free_email,
+        password: FFaker::Internet.password,
+        role: ''
+      )
+    end
+    puts 'have created fake users'
+    puts "now you have #{User.count} users data"
+  end
+
+  task fake_comment: :environment do
+    Restaurant.all.each do |restaurant|
+      3.times do |_i|
+        restaurant.comments.create!(
+          content: FFaker::Lorem.sentence,
+          user: User.all.sample
+        )
+      end
+    end
+    puts 'have created fake comments'
+    puts "now you have #{Comment.count} comment data"
   end
 end
