@@ -2,5 +2,5 @@
 
 class Favorite < ApplicationRecord
   belongs_to :user
-  belongs_to :restaurant
+  belongs_to :restaurant, counter_cache: true
 end

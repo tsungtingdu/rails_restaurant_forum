@@ -1,3 +1,4 @@
+ <div class="container"> 
    <!-- restaurants list，有多寫restaurant-item的class style -->
     <% @restaurants.each do |restaurant| %>
       <div class="col-sm-6 col-md-4">
@@ -9,12 +10,15 @@
             <p><%= truncate(restaurant.description, length: 80) %></p>
             <%= render partial: "shared/favorite", locals: {restaurant: restaurant} %>
             <%= render partial: "shared/like", locals: {restaurant: restaurant} %>
+            <p> 收藏人數：<%= restaurant.favorites.count %></p>
           </div>
         </div>
       </div>
     <% end %>
-      
+</div> 
+ <div class="container">       
     <!-- 有generate kaminari paginate bootstrap style -->
     <div class="text-center">
       <%= paginate @restaurants %>
-    </div>
+    </div>     
+</div>
