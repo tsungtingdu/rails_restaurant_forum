@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li role="presentation" ><a href="/">Restaurants</a></li>
+      <li role="presentation" ><a href="/restaurants/feeds">Feeds</a></li>
+      <li role="presentation"><a href="/restaurants/ranking">Top 10</a></li>
+      <li role="presentation"  class="active"><a href="/users">Users</a></li>      
+    </ul>
+  </div>
+  <br>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">name</th>
+          <th scope="col">email</th>
+          <th scope="col">#</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <th scope="row"><%= user.id %></th>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td>
+            <%= render partial: "shared/follow", locals: {user: user} %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div> 
+</div>

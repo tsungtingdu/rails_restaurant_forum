@@ -22,7 +22,8 @@ Rails.application.routes.draw do
     end
   end
   resources :categories, only: %i[show]
-  resources :users, only: %i[show edit update]
+  resources :users, only: %i[index show edit update]
+  resources :followships, only: %i[create destroy]
 
   namespace :admin do
     resources :restaurants

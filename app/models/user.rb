@@ -12,9 +12,15 @@ class User < ApplicationRecord
   has_many :favorited_restaurants, through: :favorites, source: :restaurant
   has_many :likes, dependent: :destroy
   has_many :liked_restaurants, through: :likes, source: :user
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
   mount_uploader :avatar, AvatarUploader
 
   def admin?
     role == 'admin'
+  end
+
+  def following?(user)
+    followings.include?(user)
   end
 end
