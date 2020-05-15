@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @followers = @user.followers
     @commented_restaurants = @user.restaurants.uniq
   end
 
