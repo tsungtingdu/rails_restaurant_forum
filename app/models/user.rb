@@ -6,7 +6,7 @@ class User < ApplicationRecord
   extend Devise::Models
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :comments
+  has_many :comments, dependent: :nullify
   has_many :restaurants, through: :comments
   mount_uploader :avatar, AvatarUploader
 
